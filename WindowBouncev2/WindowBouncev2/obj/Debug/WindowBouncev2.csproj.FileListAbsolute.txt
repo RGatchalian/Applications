@@ -1,0 +1,9 @@
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\bin\Debug\WindowBouncev2.exe.config
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\bin\Debug\WindowBouncev2.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\bin\Debug\WindowBouncev2.pdb
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.csprojResolveAssemblyReference.cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.frmMain.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.Properties.Resources.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.csproj.GenerateResource.Cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\VisualStudioProj\WindowBouncev2\WindowBouncev2\obj\Debug\WindowBouncev2.pdb
