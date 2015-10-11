@@ -30,7 +30,10 @@ namespace WindowBouncev2
         public Ball(Control c)
         {
             this.Container = c;
-//            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            //this.DoubleBuffered = true;
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            //this.SetStyle(ControlStyles.OptimizedDoubleBuffer, false);
+
 
         }
 
@@ -56,8 +59,10 @@ namespace WindowBouncev2
             Graphics g = e.Graphics;
             int offset = 2;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.AssumeLinear;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
             //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             g.FillEllipse(new SolidBrush(this.BallColor), new Rectangle(0, 0, this.Width, this.Height - offset));
 

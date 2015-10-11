@@ -24,6 +24,7 @@ namespace WindowBouncev2
         public frmMain()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             //this.SetStyle(ControlStyles.UserPaint, true);
             //this.WindowState = FormWindowState.Maximized;
            //CreateBricks();
