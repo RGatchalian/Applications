@@ -24,10 +24,14 @@ namespace WindowBouncev2
         public frmMain()
         {
             InitializeComponent();
-            this.DoubleBuffered = true;
+            this.SetStyle(
+                            System.Windows.Forms.ControlStyles.UserPaint |
+                            System.Windows.Forms.ControlStyles.AllPaintingInWmPaint |
+                            System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer,
+                            true);
             //this.SetStyle(ControlStyles.UserPaint, true);
             //this.WindowState = FormWindowState.Maximized;
-           //CreateBricks();
+            //CreateBricks();
             //addBallTimer.Interval = 100;
             //addBallTimer.Tick += AddBallTimer;
             //addBallTimer.Start();

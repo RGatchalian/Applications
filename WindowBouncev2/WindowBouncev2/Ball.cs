@@ -55,8 +55,9 @@ namespace WindowBouncev2
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-           // e.Graphics.Clear(Container.BackColor);
             Graphics g = e.Graphics;
+            g.Clear(Container.BackColor);
+
             int offset = 2;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
