@@ -1,0 +1,9 @@
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\bin\Debug\Clock.exe.config
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\bin\Debug\Clock.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\bin\Debug\Clock.pdb
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.csprojResolveAssemblyReference.cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.frmTest.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.Properties.Resources.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.csproj.GenerateResource.Cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\Clock\Clock\obj\Debug\Clock.pdb

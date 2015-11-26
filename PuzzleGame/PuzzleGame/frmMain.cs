@@ -42,10 +42,10 @@ namespace PuzzleGame
             int count = 0;
             int y_coord = 0;
             int x_coord = 0;
-            if (resize == false)
-            {
+            //if (resize == false)
+            //{
                 numbers = GenerateNumbers(num);
-            }
+            //}
             for (int x = 0; x <= buttonlabels.GetUpperBound(0); x++)
             {
                 buttonlabels[x] = new Label();

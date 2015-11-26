@@ -1,1 +1,10 @@
 C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\bin\Debug\PuzzleGame.exe.config
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\bin\Debug\PuzzleGame.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\bin\Debug\PuzzleGame.pdb
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.csprojResolveAssemblyReference.cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.frmMain.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.frmSettings.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.Properties.Resources.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.csproj.GenerateResource.Cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\PuzzleGame\PuzzleGame\obj\Debug\PuzzleGame.pdb
