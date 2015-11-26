@@ -136,7 +136,14 @@ namespace YanasSpelling
                 {
                     if (isListFound)
                     {
-                        Settings.Names.Add(line);
+                        if (line != "[/]")
+                        {
+                            Settings.Names.Add(line);
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
                     else
                     {
@@ -203,8 +210,25 @@ namespace YanasSpelling
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (isFileSaved == false)
+            {
+                if (MessageBox.Show("Do you want to save file?", "Wordomize", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    if (Settings.CurrentFileName != "")
+                    {
+                        SaveWordsToFile();
+                        isFileSaved = true;
+                    }
+                    else
+                    {
+                        saveListToolStripMenuItem_Click(sender, e);
+                    }
+                }
+            }
             Settings.CurrentFileName = "";
             isFileSaved = false;
+            lstList.Items.Clear();
+            lstRandom.Items.Clear();
         }
 
         private void txtWord_KeyPress(object sender, KeyPressEventArgs e)
@@ -220,7 +244,7 @@ namespace YanasSpelling
             frmList fl = new frmList();
             fl.Names = Settings.Names;
             if (fl.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
+            {                
                 Settings.CurrentFileName = fl.SelectedValue;
                 LoadWords();
             }
@@ -230,6 +254,7 @@ namespace YanasSpelling
             string file = Settings.DefaultFolder + "\\" + Settings.CurrentFileName + ".txt";
             if (File.Exists(file))
             {
+                lstList.Items.Clear();
                 using (StreamReader sr = new StreamReader(file))
                 {
                     string line = "";
@@ -240,6 +265,36 @@ namespace YanasSpelling
                 }
             }
         }
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+            int count = lstList.Items.Count;
+            List<string> _lstCopy = new List<string>();
+            Random rand = new Random();
+
+            lstRandom.Items.Clear();
+            foreach (string s in lstList.Items)
+            {
+                _lstCopy.Add(s);
+            }
+            do
+            {
+                int index = rand.Next(0,_lstCopy.Count);
+                string curStr = _lstCopy[index];
+                lstRandom.Items.Add(curStr);
+                _lstCopy.Remove(curStr);
+            } while (_lstCopy.Count>0);
+        }
+
+        private void lstRandom_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstRandom.Items.Count <= 0) return;
+            string selected = (string)lstRandom.Items[lstRandom.SelectedIndex];
+            this.Text = "Wordomize - " + selected;
+            lstRandom.Items.RemoveAt(lstRandom.SelectedIndex);
+
+        }
+        
     }
     public class Settings
     {

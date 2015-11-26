@@ -9,3 +9,14 @@ C:\Users\Reydan\Documents\oc_files\Laptop Files\CaseStudies\YanasSpelling\YanasS
 C:\Users\Reydan\Documents\oc_files\Laptop Files\CaseStudies\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmInput.resources
 C:\Users\Reydan\Documents\oc_files\Laptop Files\CaseStudies\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmMain.resources
 C:\Users\Reydan\Documents\oc_files\Laptop Files\CaseStudies\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmList.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe.config
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csprojResolveAssemblyReference.cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmList.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmMain.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmInput.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.Properties.Resources.resources
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csproj.GenerateResource.Cache
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe
+C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.pdb

@@ -98,6 +98,7 @@
             this.btnProcess.TabIndex = 2;
             this.btnProcess.Text = "Process";
             this.btnProcess.UseVisualStyleBackColor = true;
+            this.btnProcess.Click += new System.EventHandler(this.btnProcess_Click);
             // 
             // btnAdd
             // 
@@ -134,6 +135,7 @@
             this.lstRandom.Name = "lstRandom";
             this.lstRandom.Size = new System.Drawing.Size(464, 345);
             this.lstRandom.TabIndex = 0;
+            this.lstRandom.DoubleClick += new System.EventHandler(this.lstRandom_DoubleClick);
             // 
             // menuStrip1
             // 
@@ -160,33 +162,33 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // loadListToolStripMenuItem
             // 
             this.loadListToolStripMenuItem.Name = "loadListToolStripMenuItem";
-            this.loadListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadListToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.loadListToolStripMenuItem.Text = "Load List";
             this.loadListToolStripMenuItem.Click += new System.EventHandler(this.loadListToolStripMenuItem_Click);
             // 
             // saveListToolStripMenuItem
             // 
             this.saveListToolStripMenuItem.Name = "saveListToolStripMenuItem";
-            this.saveListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveListToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.saveListToolStripMenuItem.Text = "SaveList";
             this.saveListToolStripMenuItem.Click += new System.EventHandler(this.saveListToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(118, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // frmMain
