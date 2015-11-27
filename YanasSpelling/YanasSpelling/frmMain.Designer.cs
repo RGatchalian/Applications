@@ -37,6 +37,9 @@
             this.lstList = new System.Windows.Forms.ListBox();
             this.lstRandom = new System.Windows.Forms.ListBox();
             this.cmsRandom = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.correctToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wrongToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.undoRemoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -162,11 +165,33 @@
             // 
             this.cmsRandom.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsRandom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.correctToolStripMenuItem,
+            this.wrongToolStripMenuItem,
+            this.toolStripMenuItem3,
             this.undoRemoveToolStripMenuItem,
             this.toolStripMenuItem2,
             this.removeToolStripMenuItem});
             this.cmsRandom.Name = "cmsRandom";
-            this.cmsRandom.Size = new System.Drawing.Size(135, 54);
+            this.cmsRandom.Size = new System.Drawing.Size(135, 104);
+            // 
+            // correctToolStripMenuItem
+            // 
+            this.correctToolStripMenuItem.Name = "correctToolStripMenuItem";
+            this.correctToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.correctToolStripMenuItem.Text = "Correct";
+            this.correctToolStripMenuItem.Click += new System.EventHandler(this.correctToolStripMenuItem_Click);
+            // 
+            // wrongToolStripMenuItem
+            // 
+            this.wrongToolStripMenuItem.Name = "wrongToolStripMenuItem";
+            this.wrongToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.wrongToolStripMenuItem.Text = "Wrong";
+            this.wrongToolStripMenuItem.Click += new System.EventHandler(this.wrongToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(131, 6);
             // 
             // undoRemoveToolStripMenuItem
             // 
@@ -345,6 +370,9 @@
         private System.Windows.Forms.ToolStripMenuItem clearActivityFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoShuffleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFromListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem correctToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wrongToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
     }
 }
 

@@ -332,14 +332,15 @@ namespace YanasSpelling
                     lstRandom.Items.Add(curStr);
                     _lstCopy.Remove(curStr);
                 } while (_lstCopy.Count > 0);
+                string dName = DateTime.Now.ToString("ddMMMyyyy_hhmmss");
+                Settings.CurrentRandomFile = Settings.CurrentFileName + "_" + dName;
+
                 SaveRandom();
             }
         }
         private void SaveRandom()
         {
-            string dName = DateTime.Now.ToString("ddMMMyyyy_hhmmss");
-            string file = Settings.CurrentFileName + "_" + dName;
-            using(StreamWriter sw=new StreamWriter(Settings.ActivityRepository + "\\" + file + ".dat"))
+            using (StreamWriter sw = new StreamWriter(Settings.ActivityRepository + "\\" + Settings.CurrentRandomFile + ".dat"))
             {
                 foreach(string s in lstRandom.Items)
                 {
@@ -351,9 +352,14 @@ namespace YanasSpelling
         {
             if (lstRandom.Items.Count <= 0) return;
             string selected = (string)lstRandom.Items[lstRandom.SelectedIndex];
-            this.Text = "Wordomizer - " + selected;
-            lastremovedword = selected;
-            lstRandom.Items[lstRandom.SelectedIndex] = selected + "=Done";
+            if (selected.ToUpper().ToUpper().IndexOf("DONE") < 0)
+            {
+                this.Text = "Wordomizer - " + selected;
+                lastremovedword = selected;
+                lstRandom.Items[lstRandom.SelectedIndex] = selected + "=Done";
+                SaveRandom();
+
+            }
             //lstRandom.Items.RemoveAt(lstRandom.SelectedIndex);
 
         }
@@ -394,6 +400,7 @@ namespace YanasSpelling
                 }
             }
             this.Text = Settings.ApplicationName;
+            SaveRandom();
         }
 
         private void clearActivityFilesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -452,6 +459,64 @@ namespace YanasSpelling
         {
             Application.Exit();
         }
+
+        private void correctToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedstring = "";
+            if (lstRandom.SelectedItems.Count > 0)
+            {
+                string tmpselectedstring = lstRandom.SelectedItems[0].ToString();
+                if (tmpselectedstring.ToUpper().IndexOf("=") > 0)
+                {
+                    string[] arr = tmpselectedstring.Split('=');
+                    selectedstring = arr[0];
+                }
+                else
+                {
+                    selectedstring = tmpselectedstring;
+
+                }
+                for (int x = 0; x < lstRandom.Items.Count; x++)
+                {
+                    if (lstRandom.Items[x].ToString().IndexOf(selectedstring) >= 0)
+                    {
+                        lstRandom.Items[x] = selectedstring + "=CORRECT";
+                    }
+                }
+
+            }
+            this.Text = Settings.ApplicationName;
+            SaveRandom();
+        }
+
+        private void wrongToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string selectedstring = "";
+            if (lstRandom.SelectedItems.Count > 0)
+            {
+                string tmpselectedstring = lstRandom.SelectedItems[0].ToString();
+                if (tmpselectedstring.ToUpper().IndexOf("=") > 0)
+                {
+                    string[] arr = tmpselectedstring.Split('=');
+                    selectedstring = arr[0];
+                }
+                else
+                {
+                    selectedstring = tmpselectedstring;
+
+                }
+                for (int x = 0; x < lstRandom.Items.Count; x++)
+                {
+                    if (lstRandom.Items[x].ToString().IndexOf(selectedstring) >= 0)
+                    {
+                        lstRandom.Items[x] = selectedstring + "=WRONG";
+                    }
+                }
+
+            }
+            this.Text = Settings.ApplicationName;
+            SaveRandom();
+        }
     }
     public class Settings
     {
@@ -468,5 +533,6 @@ namespace YanasSpelling
         public static string Version = "1.0.0";
         public static string Developer = "Reydan Gatchalian";
         public static string ApplicationName = "Wordomizer";
+        public static string CurrentRandomFile { get; set; }
     }
 }
