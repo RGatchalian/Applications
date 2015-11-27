@@ -3,11 +3,12 @@ VERSION=1.0.0
 DEVELOPER=Reydan Gatchalian
 [/]
 [SETTINGS]
-LAST=list1
+LAST=newtest
 LOADLAST=TRUE
 [/]
 [LIST]
 list1
 newtest
 test2
+words
 [/]
