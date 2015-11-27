@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
+
 namespace YanasSpelling
 {
     public partial class frmMain : Form
@@ -18,11 +20,14 @@ namespace YanasSpelling
         {
             InitializeComponent();
             LoadConfig();
+            GetAppInfo();
+            CleanList();
         }
         private void LoadConfig()
         {
             Settings.DefaultFolder =Application.StartupPath + "\\db";
             Settings.Repository = Application.StartupPath + "\\db\\repository";
+            Settings.ActivityRepository = Application.StartupPath + "\\db\\repository\\activity";
             Settings.DefaultConfigFile = Settings.DefaultFolder  + "\\wordomizer.bin";
             if (!Directory.Exists(Settings.DefaultFolder))
             {
@@ -31,6 +36,10 @@ namespace YanasSpelling
             if (!Directory.Exists(Settings.Repository))
             {
                 Directory.CreateDirectory(Settings.Repository);
+            }
+            if (!Directory.Exists(Settings.ActivityRepository))
+            {
+                Directory.CreateDirectory(Settings.ActivityRepository);
             }
             if (!File.Exists(Settings.DefaultConfigFile))
             {
@@ -46,6 +55,7 @@ namespace YanasSpelling
         {
             Settings.CurrentFileName = "";
             Settings.LastFileOpen = "";
+            Settings.AutoShuffle = "";
             Settings.Names = new List<string>();
 
             using (StreamReader sr = new StreamReader(Settings.DefaultConfigFile))
@@ -89,6 +99,18 @@ namespace YanasSpelling
                                             loadLastListToolStripMenuItem.Checked = false;
                                         }
                                         break;
+                                    case "AUTOSHUFFLE":
+                                        Settings.AutoShuffle = value;
+                                        if (Settings.AutoShuffle.ToUpper() == "TRUE")
+                                        {
+                                            autoShuffleToolStripMenuItem.Checked = true;
+                                            btnProcess_Click(new object(), new EventArgs());
+                                        }
+                                        else
+                                        {
+                                            autoShuffleToolStripMenuItem.Checked = false;
+                                        }
+                                        break;
                                 }
                             }
                         }
@@ -114,12 +136,14 @@ namespace YanasSpelling
                 using (StreamWriter sw = new StreamWriter(Settings.DefaultConfigFile))
                 {
                     sw.WriteLine("[INFO]");
+                    sw.WriteLine("APPNAME=" + Settings.ApplicationName);
                     sw.WriteLine("VERSION=" + Settings.Version);
                     sw.WriteLine("DEVELOPER=" + Settings.Developer);
                     sw.WriteLine("[/]");
                     sw.WriteLine("[SETTINGS]");
                     sw.WriteLine("LAST=" + Settings.CurrentFileName);
                     sw.WriteLine("LOADLAST=" + (loadLastListToolStripMenuItem.Checked ? "TRUE" : "FALSE"));
+                    sw.WriteLine("AUTOSHUFFLE=" + (autoShuffleToolStripMenuItem.Checked ? "TRUE" : "FALSE"));
                     sw.WriteLine("[/]");
                     sw.WriteLine("[LIST]");
                     foreach (string s in Settings.Names)
@@ -182,7 +206,7 @@ namespace YanasSpelling
                 if (lstList.Items.Count > 0)
                 {
                     frmInput fi = new frmInput();
-                    fi.Caption = "Wordomizer";
+                    fi.Caption = Settings.ApplicationName;
                     fi.Label = "Please enter list name";
                     if (fi.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -214,7 +238,7 @@ namespace YanasSpelling
         {
             if (!isFileSaved)
             {
-                if (MessageBox.Show("Do you want to save file?", "Wordomizer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Do you want to save file?", Settings.ApplicationName, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (Settings.CurrentFileName != "")
                     {
@@ -295,26 +319,42 @@ namespace YanasSpelling
             Random rand = new Random();
 
             lstRandom.Items.Clear();
-            foreach (string s in lstList.Items)
+            if (lstList.Items.Count > 0)
             {
-                _lstCopy.Add(s);
+                foreach (string s in lstList.Items)
+                {
+                    _lstCopy.Add(s);
+                }
+                do
+                {
+                    int index = rand.Next(0, _lstCopy.Count);
+                    string curStr = _lstCopy[index];
+                    lstRandom.Items.Add(curStr);
+                    _lstCopy.Remove(curStr);
+                } while (_lstCopy.Count > 0);
+                SaveRandom();
             }
-            do
-            {
-                int index = rand.Next(0,_lstCopy.Count);
-                string curStr = _lstCopy[index];
-                lstRandom.Items.Add(curStr);
-                _lstCopy.Remove(curStr);
-            } while (_lstCopy.Count>0);
         }
-
+        private void SaveRandom()
+        {
+            string dName = DateTime.Now.ToString("ddMMMyyyy_hhmmss");
+            string file = Settings.CurrentFileName + "_" + dName;
+            using(StreamWriter sw=new StreamWriter(Settings.ActivityRepository + "\\" + file + ".dat"))
+            {
+                foreach(string s in lstRandom.Items)
+                {
+                    sw.WriteLine(s);
+                }
+            }
+        }
         private void lstRandom_DoubleClick(object sender, EventArgs e)
         {
             if (lstRandom.Items.Count <= 0) return;
             string selected = (string)lstRandom.Items[lstRandom.SelectedIndex];
             this.Text = "Wordomizer - " + selected;
             lastremovedword = selected;
-            lstRandom.Items.RemoveAt(lstRandom.SelectedIndex);
+            lstRandom.Items[lstRandom.SelectedIndex] = selected + "=Done";
+            //lstRandom.Items.RemoveAt(lstRandom.SelectedIndex);
 
         }
 
@@ -331,8 +371,86 @@ namespace YanasSpelling
 
         private void undoRemoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            lstRandom.Items.Add(lastremovedword);
-            this.Text = "Wordomizer";
+            //lstRandom.Items.Add(lastremovedword);
+            string selectedstring = "";
+            if (lstRandom.SelectedItems.Count > 0)
+            {
+                string tmpselectedstring = lstRandom.SelectedItems[0].ToString();
+                string[] arr = tmpselectedstring.Split('=');
+                if (arr.GetUpperBound(0) == 1)
+                {
+                    selectedstring = arr[0];
+                }
+                else
+                {
+                    selectedstring = lastremovedword;
+                }
+            }
+            for(int x=0;x< lstRandom.Items.Count;x++)
+            {
+                if (lstRandom.Items[x].ToString().IndexOf(selectedstring) >= 0)
+                {
+                    lstRandom.Items[x] = selectedstring;
+                }
+            }
+            this.Text = Settings.ApplicationName;
+        }
+
+        private void clearActivityFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to delete all the files?",Settings.ApplicationName,MessageBoxButtons.YesNo)== DialogResult.Yes)
+            {
+                foreach (string s in Directory.GetFiles(Settings.ActivityRepository))
+                {
+                    File.Delete(s);
+                }
+
+            }
+        }
+        private void GetAppInfo()
+        {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            Settings.Version = fvi.FileVersion;
+        }
+
+        private void autoShuffleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            autoShuffleToolStripMenuItem.Checked = !autoShuffleToolStripMenuItem.Checked;
+            SaveConfig();
+        }
+
+        private void deleteFromListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmList fl = new frmList();
+            fl.Names = Settings.Names;
+            fl.RepositoryPath = Settings.Repository;
+            fl.ShowDialog();
+            Settings.Names= fl.Names;
+            SaveConfig();
+        }
+
+        private void CleanList()
+        {
+            List<string> _list = new List<string>();
+            foreach(string s in Settings.Names)
+            {
+                string file = Settings.Repository + "\\" + s + ".txt";
+                if (!File.Exists(file))
+                {
+                    _list.Add(s);
+                }
+            }
+            foreach(string s in _list)
+            {
+                Settings.Names.Remove(s);
+            }
+            SaveConfig();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
     public class Settings
@@ -340,12 +458,15 @@ namespace YanasSpelling
         public static List<string> Names { get; set; }
         public static string DefaultFolder { get; set; }
         public static string Repository { get; set; }
+        public static string ActivityRepository { get; set; }
         public static string CurrentFileName { get; set; }
         public static string DefaultConfigFile { get; set; }
         public static List<string> Words { get; set; }
         public static string LastFileOpen { get; set; }
+        public static string AutoShuffle { get; set; }
         public static string LoadLastFileOpen { get; set; }
-        public const string Version = "1.0.0";
-        public const string Developer = "Reydan Gatchalian";
+        public static string Version = "1.0.0";
+        public static string Developer = "Reydan Gatchalian";
+        public static string ApplicationName = "Wordomizer";
     }
 }

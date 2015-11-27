@@ -33,3 +33,11 @@ K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe.config
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.exe
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.pdb
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csprojResolveAssemblyReference.cache
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmList.resources
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmMain.resources
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmInput.resources
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.Properties.Resources.resources
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csproj.GenerateResource.Cache
