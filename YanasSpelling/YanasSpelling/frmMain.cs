@@ -13,6 +13,7 @@ namespace YanasSpelling
     public partial class frmMain : Form
     {
         private bool isFileSaved = true;
+        private string lastremovedword = "";
         public frmMain()
         {
             InitializeComponent();
@@ -21,10 +22,15 @@ namespace YanasSpelling
         private void LoadConfig()
         {
             Settings.DefaultFolder =Application.StartupPath + "\\db";
+            Settings.Repository = Application.StartupPath + "\\db\\repository";
             Settings.DefaultConfigFile = Settings.DefaultFolder  + "\\wordomizer.bin";
             if (!Directory.Exists(Settings.DefaultFolder))
             {
                 Directory.CreateDirectory(Settings.DefaultFolder);
+            }
+            if (!Directory.Exists(Settings.Repository))
+            {
+                Directory.CreateDirectory(Settings.Repository);
             }
             if (!File.Exists(Settings.DefaultConfigFile))
             {
@@ -35,6 +41,7 @@ namespace YanasSpelling
             LoadNames();
 
         }
+       
         private void LoadSettings()
         {
             Settings.CurrentFileName = "";
@@ -68,6 +75,19 @@ namespace YanasSpelling
                                 {
                                     case "LAST":
                                         Settings.LastFileOpen = value;
+                                        Settings.CurrentFileName = value;
+                                        break;
+                                    case "LOADLAST":
+                                        Settings.LoadLastFileOpen = value;
+                                        if (Settings.LoadLastFileOpen.ToUpper() == "TRUE")
+                                        {
+                                            loadLastListToolStripMenuItem.Checked = true;
+                                            LoadWords();
+                                        }
+                                        else
+                                        {
+                                            loadLastListToolStripMenuItem.Checked = false;
+                                        }
                                         break;
                                 }
                             }
@@ -86,13 +106,21 @@ namespace YanasSpelling
             txtWord.Text = "";
         }
 
-        private void SaveList()
+        private void SaveConfig()
         {
             Settings.LastFileOpen = Settings.CurrentFileName;
-            if (IsFileFound())
+            if (Settings.Names.Count > 0)
             {
                 using (StreamWriter sw = new StreamWriter(Settings.DefaultConfigFile))
                 {
+                    sw.WriteLine("[INFO]");
+                    sw.WriteLine("VERSION=" + Settings.Version);
+                    sw.WriteLine("DEVELOPER=" + Settings.Developer);
+                    sw.WriteLine("[/]");
+                    sw.WriteLine("[SETTINGS]");
+                    sw.WriteLine("LAST=" + Settings.CurrentFileName);
+                    sw.WriteLine("LOADLAST=" + (loadLastListToolStripMenuItem.Checked ? "TRUE" : "FALSE"));
+                    sw.WriteLine("[/]");
                     sw.WriteLine("[LIST]");
                     foreach (string s in Settings.Names)
                     {
@@ -100,12 +128,13 @@ namespace YanasSpelling
                     }
                     sw.WriteLine("[/]");
                 }
+
             }
         }
 
         private void SaveWordsToFile()
         {
-            string file = Settings.DefaultFolder + "\\" + Settings.CurrentFileName + ".txt";
+            string file = Settings.Repository + "\\" + Settings.CurrentFileName + ".txt";
             using (StreamWriter sw = new StreamWriter(file))
             {
                 foreach (string s in lstList.Items)
@@ -115,17 +144,6 @@ namespace YanasSpelling
             }
         }
 
-        private bool IsFileFound()
-        {
-            foreach (string s in Settings.Names)
-            {
-                if (s == Settings.CurrentFileName)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
         private void LoadNames()
         {
             using (StreamReader sr = new StreamReader(Settings.DefaultConfigFile))
@@ -164,13 +182,16 @@ namespace YanasSpelling
                 if (lstList.Items.Count > 0)
                 {
                     frmInput fi = new frmInput();
-                    fi.Caption = "Wordomize";
+                    fi.Caption = "Wordomizer";
                     fi.Label = "Please enter list name";
                     if (fi.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         Settings.CurrentFileName = fi.Value;
-                        Settings.Names.Add(Settings.CurrentFileName);
-                        SaveList();
+                        if (Settings.Names.IndexOf(Settings.CurrentFileName) < 0)
+                        {
+                            Settings.Names.Add(Settings.CurrentFileName);
+                        }
+                        SaveConfig();
                         SaveWordsToFile();
                         isFileSaved = true;
                     }
@@ -193,7 +214,7 @@ namespace YanasSpelling
         {
             if (!isFileSaved)
             {
-                if (MessageBox.Show("Do you want to save file?", "Wordomize", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show("Do you want to save file?", "Wordomizer", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     if (Settings.CurrentFileName != "")
                     {
@@ -246,12 +267,13 @@ namespace YanasSpelling
             if (fl.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {                
                 Settings.CurrentFileName = fl.SelectedValue;
+                SaveConfig();
                 LoadWords();
             }
         }
         private void LoadWords()
         {
-            string file = Settings.DefaultFolder + "\\" + Settings.CurrentFileName + ".txt";
+            string file = Settings.Repository + "\\" + Settings.CurrentFileName + ".txt";
             if (File.Exists(file))
             {
                 lstList.Items.Clear();
@@ -290,19 +312,40 @@ namespace YanasSpelling
         {
             if (lstRandom.Items.Count <= 0) return;
             string selected = (string)lstRandom.Items[lstRandom.SelectedIndex];
-            this.Text = "Wordomize - " + selected;
+            this.Text = "Wordomizer - " + selected;
+            lastremovedword = selected;
             lstRandom.Items.RemoveAt(lstRandom.SelectedIndex);
 
         }
-        
+
+        private void loadLastListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadLastListToolStripMenuItem.Checked = !loadLastListToolStripMenuItem.Checked;
+            SaveConfig();
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lstRandom_DoubleClick(sender, e);
+        }
+
+        private void undoRemoveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lstRandom.Items.Add(lastremovedword);
+            this.Text = "Wordomizer";
+        }
     }
     public class Settings
     {
         public static List<string> Names { get; set; }
         public static string DefaultFolder { get; set; }
+        public static string Repository { get; set; }
         public static string CurrentFileName { get; set; }
         public static string DefaultConfigFile { get; set; }
         public static List<string> Words { get; set; }
         public static string LastFileOpen { get; set; }
+        public static string LoadLastFileOpen { get; set; }
+        public const string Version = "1.0.0";
+        public const string Developer = "Reydan Gatchalian";
     }
 }

@@ -20,3 +20,16 @@ C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applicati
 C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csproj.GenerateResource.Cache
 C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe
 C:\Users\Reydan\Documents\oc_files\Laptop Files\git_repo\visual_studio\Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.pdb
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe.config
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.pdb
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmList.resources
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmMain.resources
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.frmInput.resources
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.Properties.Resources.resources
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csproj.GenerateResource.Cache
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.exe
+K:\RGTools\YanasSpelling\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\bin\Debug\YanasSpelling.exe.config
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.exe
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
