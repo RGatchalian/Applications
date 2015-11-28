@@ -517,6 +517,24 @@ namespace YanasSpelling
             this.Text = Settings.ApplicationName;
             SaveRandom();
         }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstList.SelectedItems.Count > 0)
+            {
+                string tmpselectedstring = lstList.SelectedItem.ToString();
+                int index = lstList.SelectedIndex;
+                frmInput fi = new frmInput();
+                fi.Caption = Settings.ApplicationName + "-" + tmpselectedstring;
+                fi.Label = "Change Text";
+                fi.Value = tmpselectedstring;
+                if (fi.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    lstList.Items[lstList.SelectedIndex] = fi.Value;
+                    SaveWordsToFile();
+                }
+            }
+        }
     }
     public class Settings
     {

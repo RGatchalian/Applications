@@ -40,3 +40,4 @@ Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\Y
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csproj.GenerateResource.Cache
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.exe
 Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.pdb
+Z:\voicemeout_oc\git_rep\VisualStudioProj\Games_And_Applications\YanasSpelling\YanasSpelling\obj\Debug\YanasSpelling.csprojResolveAssemblyReference.cache

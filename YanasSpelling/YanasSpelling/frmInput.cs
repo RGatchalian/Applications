@@ -14,7 +14,20 @@ namespace YanasSpelling
     {
         private string _caption = "Wordomaize";
         private string _label = "Please Enter Text";
-        public string Value { get; set; }
+        private string _value = "";
+        public string Value
+        {
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+
+                txtInput.Text = _value;
+            }
+        }
 
         public string Caption
         {
